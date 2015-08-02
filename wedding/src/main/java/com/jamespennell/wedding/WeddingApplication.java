@@ -1,5 +1,6 @@
 package com.jamespennell.wedding;
 
+import com.bazaarvoice.dropwizard.assets.ConfiguredAssetsBundle;
 import com.hubspot.dropwizard.guice.GuiceBundle;
 import com.jamespennell.wedding.health.SimpleHealthCheck;
 import com.jamespennell.wedding.resources.HelloResource;
@@ -29,6 +30,7 @@ public class WeddingApplication extends Application<WeddingConfiguration> {
 		bootstrap.addBundle(guice);
 		bootstrap.addBundle(new VersionBundle(new MavenVersionSupplier("com.jamespennell", "wedding")));
 		bootstrap.addBundle(new ViewBundle<>());
+		bootstrap.addBundle(new ConfiguredAssetsBundle("/assets/", "/assets/"));
 	}
 
 	public static void main(final String[] args) throws Exception {
