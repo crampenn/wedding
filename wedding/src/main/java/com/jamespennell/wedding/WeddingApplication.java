@@ -7,6 +7,7 @@ import com.jamespennell.wedding.resources.HelloResource;
 import io.dropwizard.Application;
 import io.dropwizard.bundles.version.VersionBundle;
 import io.dropwizard.bundles.version.suppliers.MavenVersionSupplier;
+import io.dropwizard.forms.MultiPartBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
@@ -31,6 +32,7 @@ public class WeddingApplication extends Application<WeddingConfiguration> {
 		bootstrap.addBundle(new VersionBundle(new MavenVersionSupplier("com.jamespennell", "wedding")));
 		bootstrap.addBundle(new ViewBundle<>());
 		bootstrap.addBundle(new ConfiguredAssetsBundle("/assets/", "/assets/"));
+		bootstrap.addBundle(new MultiPartBundle());
 	}
 
 	public static void main(final String[] args) throws Exception {
